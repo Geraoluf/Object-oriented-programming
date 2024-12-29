@@ -22,28 +22,12 @@ namespace Oop
         }
 
 
-        public Date GetBeginning(Child schoolChild) //(Child=fødselsdsag, navn)
+        public Date GetBeginning(Child schoolChild) 
         {
-            Date oldEnough = schoolChild.GetDateByAge(_minAge);
-            //udregning af om barnet er gammel nok vil være Child ansvar
-            //er barnet gammel nok til at begynde skolen.
-            //GetDateByAge modtager (_minAge) til sin udregning og retunere 
-            //noget tilbage. OOP. (opdeling af ansvar)
-
-            Date cutoff = oldEnough.GetFirstOccurrence(_cutoff);
-            //udregning af cutoffdate vil være Date ansvar
-            //når barnet er gammel nok fx 6 år hvad er første valide cutoff dato
-
-            Date schoolday = cutoff.GetFirstOccurrence(_schoolStart);
-            //først mulige lejlighed af skolebeginning dato på selve cutoff
-            //dato eller efter cutoff
-
+            Date oldEnough = schoolChild.GetDateByAge(_minAge);         
+            Date cutoff = oldEnough.GetFirstOccurrence(_cutoff);        
+            Date schoolday = cutoff.GetFirstOccurrence(_schoolStart);         
             return schoolday;
-
-            //Responsebility in OOP
-            //collaboration til at nå opfyldelse af usecase
-
-
         }
 
 
